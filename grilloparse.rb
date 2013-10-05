@@ -1,4 +1,3 @@
-#encoding: ISO-8859-1
 require 'open-uri'
 require 'nokogiri'
 require_relative 'comment'  
