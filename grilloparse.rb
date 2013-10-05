@@ -6,7 +6,7 @@ require_relative 'comment'
 puts "--- Parsing HTML document.." 
 # Nokogiri opens the url passed through command line
 doc = Nokogiri::HTML(open(ARGV[0]))
-puts "--- done :)"
+puts "--- done!"
 
 cc = 0 # comment_counter
 contents        = []
@@ -15,7 +15,7 @@ medium_ratings  = []
 votes_numbers   = []
 
 # PARSE COMMENTS DATA
-puts "--- Parsing Comments Datas..."
+puts "--- Parsing Comments Nodes..."
 doc.css('#commentsToSort .comment-posted').each_with_index do |cpn, i|
   contents[i]       = Comment.get_comment_content_for cpn # cpn: comment-posted current node
   authors[i]        = cpn.css('tr:first-child td b').inner_html
@@ -25,7 +25,7 @@ doc.css('#commentsToSort .comment-posted').each_with_index do |cpn, i|
 end
 
 # CREATING COMMENT OBJECTS
-puts "--- Creating comment objects"
+puts "--- Creating comment objects..."
 comments = []
 i = 0 
 while i < cc
@@ -33,10 +33,10 @@ while i < cc
   i = i+1  
 end 
 
-puts "--- Sorting Comments by Rating"
+puts "--- Sorting Comments by Rating..."
 comments.sort!
 
-puts "--- Writing Results"
+puts "--- Writing Results:"
 i = 0
 while i < cc
   puts comments[i]
